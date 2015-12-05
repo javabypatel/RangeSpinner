@@ -1,7 +1,8 @@
 # RangeSpinner
-Angular Directive for Range Spinner with increment and decrement button.
+Number Range Spinner is Angular JS directive which is used for incrementing-decrementing integer/decimal value using button. 
 
-![alt tag](http://4.bp.blogspot.com/-kPXK6ec8DRg/VmMrFJtNYEI/AAAAAAAAAus/0WcPbCu4xPE/s1600/number-range-spinner.png)
+# It is easy to understand and simple to implement.
+
 ```
 <div range-spinner
 	range-min="1" 
@@ -15,3 +16,7 @@ Angular Directive for Range Spinner with increment and decrement button.
 	id-of-field="rangeFieldId">
 </div>
 ```
+# Configuration Parameters.
+
+![](http://4.bp.blogspot.com/-kPXK6ec8DRg/VmMrFJtNYEI/AAAAAAAAAus/0WcPbCu4xPE/s1600/number-range-spinner.png)
+
