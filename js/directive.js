@@ -23,19 +23,19 @@ angular.module('rangeNumberSpinnerApp')
 				$scope.step = +(angular.isDefined($attrs.rangeStep)?$attrs.rangeStep:0);
 				$scope.maxRange = +(angular.isDefined($attrs.rangeMax)?$attrs.rangeMax:100);
 				$scope.rangeDecPrec = +(angular.isDefined($attrs.rangeDecimalPrecision)?$attrs.rangeDecimalPrecision:1);
-				
+
 				//Initializing rangeModel with default Value if supplied rangeDefaultValue is not between minRange and maxRange.
 				if(angular.isDefined($scope.rangeDefaultValue) && !isNaN($scope.rangeDefaultValue)){
-				 var rangeDefaultVal = parseFloat($scope.rangeDefaultValue);
-				 if(rangeDefaultVal >= $scope.minRange && rangeDefaultVal <= $scope.maxRange){
-					$scope.rangeModel = parseFloat($scope.rangeDefaultValue).toFixed($scope.rangeDecPrec);
-				 }else{
-					$scope.rangeModel = parseFloat($scope.minRange).toFixed($scope.rangeDecPrec);
-				 }
+					var rangeDefaultVal = parseFloat($scope.rangeDefaultValue);
+					if(rangeDefaultVal >= $scope.minRange && rangeDefaultVal <= $scope.maxRange){
+						$scope.rangeModel = parseFloat($scope.rangeDefaultValue).toFixed($scope.rangeDecPrec);
+					}else{
+						$scope.rangeModel = parseFloat($scope.minRange).toFixed($scope.rangeDecPrec);
+					}
 				}
-				
+					
 				//Plus Button Method
-				$scope.queueRangePlus = function() {
+				$scope.rangePlusFunc = function() {
 					if (angular.isUndefined($scope.rangeModel) || isNaN($scope.rangeModel) || $scope.rangeModel===""){
 						$scope.rangeModel = $scope.minRange;
 					}else{	
@@ -50,7 +50,7 @@ angular.module('rangeNumberSpinnerApp')
 				};
 
 				//Minus Button Method
-				$scope.queueRangeMinus = function() {
+				$scope.rangeMinusFunc = function() {
 					if (angular.isUndefined($scope.rangeModel) || isNaN($scope.rangeModel) || $scope.rangeModel===""){
 						$scope.rangeModel = $scope.minRange;
 					}else{
@@ -64,12 +64,12 @@ angular.module('rangeNumberSpinnerApp')
 						}
 					}
 				};
-				
+					
 				//For Direct Editing
 				$scope.$watch(function(){
 					return $scope.rangeModel;
 				}, function(newvalue, oldvalue){
-				
+					
 					if(angular.isDefined($scope.rangeModel)){
 						if (!isNaN($scope.rangeModel)){
 							if ($scope.rangeModel > $scope.maxRange){
@@ -92,19 +92,19 @@ angular.module('rangeNumberSpinnerApp')
 						}
 					}
 				},true);
-				
+		
 			}
 		};
-	})
-	.run(['$templateCache',function($templateCache){
-		console.log("In the spinner run method of the module");
-		$templateCache.put('tmpl/rangeSpinner.html',
-				'<div class="ranger"> \
-					<div class="btnRange"> \
-						<button type="button" class="minus" ng-click="queueRangeMinus()">-</button> \
-						<input name="{{nameOfField}}" id="{{idOfField}}" type="text" class="queueFactorRange" range-min="{{rangeMin}}" range-step="{{rangeStep}}" range-max="{{rangeMax}}" ng-model="rangeModel" required> \
-						<button type="button" class="plus" ng-click="queueRangePlus()">+</button>\
-					</div> \
-				</div>');
-	}]);
+	}
+)
+.run(['$templateCache',function($templateCache){
+	$templateCache.put('tmpl/rangeSpinner.html',
+		'<div class="rangespinner"> \
+			<div> \
+				<button type="button" ng-click="rangeMinusFunc()">-</button> \
+				<input name="{{nameOfField}}" id="{{idOfField}}" type="text" range-min="{{rangeMin}}" range-step="{{rangeStep}}" range-max="{{rangeMax}}" ng-model="rangeModel" required> \
+				<button type="button" ng-click="rangePlusFunc()">+</button>\
+			</div> \
+		</div>');
+}]);
  
