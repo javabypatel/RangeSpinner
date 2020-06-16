@@ -1,7 +1,7 @@
 # RangeSpinner
 Number Range Spinner is Angular JS directive which is used for incrementing-decrementing integer/decimal value using button. 
 
-For detailed explanation: http://javabypatel.blogspot.in/2015/12/number-range-spinner-angularjs-directive.html
+For detailed explanation: https://javabypatel.blogspot.com/2015/12/number-range-spinner-angularjs-directive.html
 
 # It is easy to understand and simple to implement.
 
